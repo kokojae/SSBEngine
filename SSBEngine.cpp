@@ -4,6 +4,9 @@
 #include "framework.h"
 #include "SSBEngine.h"
 
+#include "GameManager.h"
+#include "Camera.h"
+
 #define MAX_LOADSTRING 100
 
 // 전역 변수:
@@ -56,8 +59,11 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         {
             // Update
             // Render
+            GameManager::Render();
         }
     }
+
+    GameManager::Release();
 
     return (int) msg.wParam;
 }
@@ -104,7 +110,7 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
 {
    hInst = hInstance; // 인스턴스 핸들을 전역 변수에 저장합니다.
 
-   RECT rc = { 0,0,1280,720 };
+   RECT rc = { 0,0,Camera::screenHeight,Camera::screenWidth };
 
    AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW ^ WS_THICKFRAME ^ WS_MAXIMIZEBOX, false);
 
@@ -115,6 +121,8 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    {
       return FALSE;
    }
+
+   GameManager::Init(hWnd);
 
    ShowWindow(hWnd, nCmdShow);
    UpdateWindow(hWnd);
