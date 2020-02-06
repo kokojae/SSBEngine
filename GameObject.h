@@ -17,6 +17,8 @@ public:
 	float		rotation;
 	D3DXVECTOR2 scale;
 
+	bool isActive;
+
 	virtual void Init();
 	virtual void Update();
 	virtual void LateUpdate();

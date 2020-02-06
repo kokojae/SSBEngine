@@ -1,6 +1,6 @@
 #include "GameObject.h"
 
-GameObject::GameObject() : position({ 0.0f,0.0f }), rotation(0.0f), scale({ 0.0f,0.0f })
+GameObject::GameObject() : position({ 0.0f,0.0f }), rotation(0.0f), scale({ 0.0f,0.0f }), isActive(true)
 {
 }
 
