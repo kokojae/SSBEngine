@@ -58,6 +58,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
         else
         {
             // Update
+            GameManager::Update();
             // Render
             GameManager::Render();
         }

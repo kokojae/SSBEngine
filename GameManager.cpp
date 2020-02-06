@@ -1,8 +1,10 @@
 #include "GameManager.h"
 #include "Camera.h"
+#include "Scene.h"
 
 LPDIRECT3D9 GameManager::g_pD3D = nullptr;
 LPDIRECT3DDEVICE9 GameManager::g_pd3dDevice = nullptr;
+Scene* GameManager::nowScene = nullptr;
 
 GameManager::GameManager()
 {
@@ -28,6 +30,12 @@ void GameManager::Init(HWND hWnd)
 	g_pD3D->CreateDevice(D3DADAPTER_DEFAULT, D3DDEVTYPE_HAL, hWnd,
 		D3DCREATE_SOFTWARE_VERTEXPROCESSING,
 		&d3dpp, &g_pd3dDevice);
+
+	nowScene = new Scene();
+}
+
+void GameManager::Update()
+{
 }
 
 void GameManager::Render()
