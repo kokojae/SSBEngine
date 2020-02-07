@@ -2,6 +2,7 @@
 #include "Camera.h"
 #include "Scene.h"
 #include "GameObject.h"
+#include "GraphicManager.h"
 
 LPDIRECT3D9 GameManager::g_pD3D = nullptr;
 LPDIRECT3DDEVICE9 GameManager::g_pd3dDevice = nullptr;
@@ -33,6 +34,8 @@ void GameManager::Init(HWND hWnd)
 		&d3dpp, &g_pd3dDevice);
 
 	nowScene = new Scene();
+
+	GraphicManager::Init(g_pd3dDevice);
 }
 
 void GameManager::Update()
@@ -53,6 +56,7 @@ void GameManager::Render()
 	{
 		obj->Render();
 	}
+	GraphicManager::Render();
 
 	// End the scene
 	g_pd3dDevice->EndScene();

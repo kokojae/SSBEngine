@@ -154,6 +154,7 @@
     <ClInclude Include="framework.h" />
     <ClInclude Include="GameManager.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="GraphicManager.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SSBEngine.h" />
@@ -165,6 +166,7 @@
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="GameManager.cpp" />
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="GraphicManager.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SSBEngine.cpp" />
     <ClCompile Include="Transform.cpp" />
