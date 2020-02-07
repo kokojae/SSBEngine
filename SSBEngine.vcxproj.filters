@@ -66,6 +66,9 @@
     <ClInclude Include="Animation.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="TestObject.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="SSBEngine.cpp">
@@ -92,8 +95,11 @@
     <ClCompile Include="GameObject.cpp">
       <Filter>소스 파일\GameObject\Base</Filter>
     </ClCompile>
+    <ClCompile Include="TestObject.cpp">
+      <Filter>소스 파일\GameObject</Filter>
+    </ClCompile>
     <ClCompile Include="Animation.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>소스 파일\Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

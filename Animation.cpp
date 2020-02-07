@@ -1,4 +1,14 @@
 #include "Animation.h"
+#include "GraphicManager.h"
+
+Animation::Animation() : textureName(""), imageSize({ 0,0 }), frameSize({ 0,0 }), nowFrame({ 0,0 }),
+lastChangeTime(0), timePerFrame(0)
+{
+}
+
+Animation::~Animation()
+{
+}
 
 void Animation::Update()
 {
@@ -26,12 +36,25 @@ void Animation::Update()
 
 void Animation::SetAnimation(std::string textureName)
 {
+	this->textureName = textureName;
+	imageSize = GraphicManager::GetTextureSize("TestImage");
+
 	lastChangeTime = clock();
 
 	if (textureName == "TestImage")
 	{
 		// clock_t -> 1√  == 1000ms
-		timePerFrame = 100;
+		timePerFrame = 500;
 		frameSize = { 192,108 };
 	}
+}
+
+RECT Animation::GetRect()
+{
+	int left	= nowFrame.x;
+	int top		= 0;
+	int right	= left + frameSize.x;
+	int bottom	= top + frameSize.y;
+
+	return { left,top,right,bottom };
 }

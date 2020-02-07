@@ -3,6 +3,7 @@
 #include "Scene.h"
 #include "GameObject.h"
 #include "GraphicManager.h"
+#include "TestObject.h"
 
 LPDIRECT3D9 GameManager::g_pD3D = nullptr;
 LPDIRECT3DDEVICE9 GameManager::g_pd3dDevice = nullptr;
@@ -36,6 +37,8 @@ void GameManager::Init(HWND hWnd)
 	nowScene = new Scene();
 
 	GraphicManager::Init(g_pd3dDevice);
+
+	Instantiate<TestObject>({ 0.0f, 0.0f });
 }
 
 void GameManager::Update()

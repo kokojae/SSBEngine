@@ -160,6 +160,7 @@
     <ClInclude Include="Scene.h" />
     <ClInclude Include="SSBEngine.h" />
     <ClInclude Include="targetver.h" />
+    <ClInclude Include="TestObject.h" />
     <ClInclude Include="Transform.h" />
   </ItemGroup>
   <ItemGroup>
@@ -171,6 +172,7 @@
     <ClCompile Include="GraphicManager.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SSBEngine.cpp" />
+    <ClCompile Include="TestObject.cpp" />
     <ClCompile Include="Transform.cpp" />
   </ItemGroup>
   <ItemGroup>

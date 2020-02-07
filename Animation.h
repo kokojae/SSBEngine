@@ -21,5 +21,6 @@ public:
 	void Update();
 
 	void SetAnimation(std::string textureName);
+	RECT GetRect();
 };
 

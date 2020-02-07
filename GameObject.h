@@ -6,12 +6,15 @@
 #include <d3dx9.h>
 
 class Component;
+class Animation;
 
 class GameObject
 {
 public:
 	GameObject();
 	~GameObject();
+
+	Animation* animation;
 	
 	D3DXVECTOR2 position;
 	float		rotation;
@@ -24,6 +27,8 @@ public:
 	virtual void LateUpdate();
 	virtual void Render();
 	virtual void Release();
+
+	void UpdateAnimation();
 
 	//std::map<std::string, Component*> componentMap;
 	//std::list<Component*> componentList;

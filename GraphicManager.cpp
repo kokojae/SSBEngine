@@ -1,4 +1,7 @@
 #include "GraphicManager.h"
+#include "Scene.h"
+#include "Animation.h"
+#include "GameObject.h"
 
 LPDIRECT3DDEVICE9 GraphicManager::device = nullptr;
 LPD3DXSPRITE GraphicManager::sprite = nullptr;
@@ -25,21 +28,28 @@ void GraphicManager::Init(LPDIRECT3DDEVICE9 device)
 
 void GraphicManager::Render()
 {
+	auto objList = GameManager::nowScene->objectList;
+	for (auto obj : objList)
+	{
+		Render(obj);
+	}
+}
+
+void GraphicManager::Render(GameObject* object)
+{
+	auto tex = GetTexture(object->animation->textureName);
+
 	D3DXMATRIX mat, pos;
 
 	D3DXMatrixTranslation(&pos, 0.0f, 0.0f, 0.0f);
 
 	mat = pos;
 
-	auto texSize = GetTextureSize();
-	RECT rc = { 0,0,texSize.x,texSize.y };
+	RECT rc = object->animation->GetRect();
 
 	sprite->SetTransform(&mat);
 	sprite->Begin(D3DXSPRITE_ALPHABLEND);
-	for (auto tex : textureMap)
-	{
-		sprite->Draw(tex.second, &rc, NULL, NULL, D3DCOLOR_ARGB(255, 255, 255, 255));
-	}
+	sprite->Draw(tex, &rc, NULL, NULL, D3DCOLOR_ARGB(255, 255, 255, 255));
 	sprite->End();
 }
 
@@ -66,13 +76,19 @@ LPDIRECT3DTEXTURE9 GraphicManager::CreateTexture(LPCWSTR fileName)
 	return texture;
 }
 
-D3DXVECTOR2 GraphicManager::GetTextureSize()
+D3DXVECTOR2 GraphicManager::GetTextureSize(LPDIRECT3DTEXTURE9 texture)
 {
 	D3DSURFACE_DESC de;
 
-	//testTexture->GetLevelDesc(0, &de);
+	texture->GetLevelDesc(0, &de);
 
 	return { static_cast<float>(de.Width),static_cast<float>(de.Height) };
+}
+
+D3DXVECTOR2 GraphicManager::GetTextureSize(std::string textureName)
+{
+	auto tex = GetTexture(textureName);
+	return GetTextureSize(tex);
 }
 
 void GraphicManager::AddTexture(std::string textureName, LPCWSTR fileName)

@@ -24,6 +24,7 @@ void Scene::Update()
 		else
 		{
 			obj->Update();
+			obj->UpdateAnimation();
 		}
 	}
 	for (auto obj : objectList)
