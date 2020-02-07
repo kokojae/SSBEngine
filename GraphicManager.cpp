@@ -1,8 +1,9 @@
 #include "GraphicManager.h"
 
 LPDIRECT3DDEVICE9 GraphicManager::device = nullptr;
-LPDIRECT3DTEXTURE9 GraphicManager::testTexture = nullptr;
 LPD3DXSPRITE GraphicManager::sprite = nullptr;
+std::map<std::string, LPDIRECT3DTEXTURE9> GraphicManager::textureMap = std::map<std::string, LPDIRECT3DTEXTURE9>();
+
 
 GraphicManager::GraphicManager()
 {
@@ -18,7 +19,8 @@ void GraphicManager::Init(LPDIRECT3DDEVICE9 device)
 
 	D3DXCreateSprite(device, &sprite);
 
-	testTexture = CreateTexture(L"dd.png");
+	//testTexture = CreateTexture(L"dd.png");
+	AddTexture("TestImage", L"dd.png");
 }
 
 void GraphicManager::Render()
@@ -34,7 +36,10 @@ void GraphicManager::Render()
 
 	sprite->SetTransform(&mat);
 	sprite->Begin(D3DXSPRITE_ALPHABLEND);
-	sprite->Draw(testTexture, &rc, NULL, NULL, D3DCOLOR_ARGB(255, 255, 255, 255));
+	for (auto tex : textureMap)
+	{
+		sprite->Draw(tex.second, &rc, NULL, NULL, D3DCOLOR_ARGB(255, 255, 255, 255));
+	}
 	sprite->End();
 }
 
@@ -65,7 +70,30 @@ D3DXVECTOR2 GraphicManager::GetTextureSize()
 {
 	D3DSURFACE_DESC de;
 
-	testTexture->GetLevelDesc(0, &de);
+	//testTexture->GetLevelDesc(0, &de);
 
 	return { static_cast<float>(de.Width),static_cast<float>(de.Height) };
+}
+
+void GraphicManager::AddTexture(std::string textureName, LPCWSTR fileName)
+{
+	auto pair = textureMap.find(textureName);
+	if (pair == textureMap.end())
+	{
+		auto tex = CreateTexture(fileName);
+
+		textureMap.insert(std::make_pair(textureName, tex));
+
+	}
+}
+
+LPDIRECT3DTEXTURE9 GraphicManager::GetTexture(std::string textureName)
+{
+	auto pair = textureMap.find(textureName);
+	if (pair == textureMap.end())
+	{
+		return nullptr;
+	}
+
+	return pair->second;
 }
