@@ -38,12 +38,21 @@ void GraphicManager::Render()
 void GraphicManager::Render(GameObject* object)
 {
 	auto tex = GetTexture(object->animation->textureName);
+	auto frameSize = object->animation->frameSize;
 
-	D3DXMATRIX mat, pos;
+	if (tex == nullptr)
+	{
+		return;
+	}
 
-	D3DXMatrixTranslation(&pos, 0.0f, 0.0f, 0.0f);
+	D3DXMATRIX mat, pos, cent, rot, sca;
 
-	mat = pos;
+	D3DXMatrixTranslation(&pos, object->position.x, object->position.y, 0.0f);
+	D3DXMatrixTranslation(&cent, -frameSize.x * 0.5f, -frameSize.y * 0.5f, 0.0f);	
+	D3DXMatrixRotationZ(&rot, D3DXToRadian(object->rotation));
+	D3DXMatrixScaling(&sca, object->scale.x, object->scale.y, 0.0f);
+
+	mat = cent * sca * rot * pos;
 
 	RECT rc = object->animation->GetRect();
 

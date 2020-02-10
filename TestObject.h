@@ -8,5 +8,7 @@ public:
 	~TestObject();
 
 	void Init() override;
+	void Update() override;
+	void LateUpdate() override;
 };
 

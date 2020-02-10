@@ -29,9 +29,9 @@ T* Instantiate(D3DXVECTOR2 position)
 		return nullptr;
 	}
 
+	gameObject->position = position;
 	GameManager::nowScene->AddGameObject(obj);
 
-	gameObject->position = position;
 	return obj;
 }
 
