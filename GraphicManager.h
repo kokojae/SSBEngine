@@ -26,3 +26,5 @@ public:
 	static LPDIRECT3DTEXTURE9 GetTexture(std::string textureName);
 };
 
+bool Compare(GameObject* o1, GameObject* o2);
+

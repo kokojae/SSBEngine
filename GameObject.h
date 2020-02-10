@@ -21,6 +21,7 @@ public:
 	D3DXVECTOR2 scale;
 
 	bool isActive;
+	int sortingLayer;
 
 	virtual void Init();
 	virtual void Update();

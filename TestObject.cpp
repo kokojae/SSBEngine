@@ -15,6 +15,7 @@ void TestObject::Init()
 
 	position = { 0.0f,0.0f };
 	//position = { 100.0f,100.0f };
+	sortingLayer = 1;
 }
 
 void TestObject::Update()

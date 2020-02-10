@@ -31,6 +31,14 @@ void GraphicManager::Init(LPDIRECT3DDEVICE9 device)
 void GraphicManager::Render()
 {
 	auto objList = GameManager::nowScene->objectList;
+
+	//auto Compare = [](GameObject* o1, GameObject* o2)
+	//{
+	//	return o1->sortingLayer < o2->sortingLayer;
+	//};
+
+	objList.sort(Compare);
+
 	for (auto obj : objList)
 	{
 		Render(obj);
@@ -125,4 +133,9 @@ LPDIRECT3DTEXTURE9 GraphicManager::GetTexture(std::string textureName)
 	}
 
 	return pair->second;
+}
+
+bool Compare(GameObject* o1, GameObject* o2)
+{
+	return o1->sortingLayer < o2->sortingLayer;
 }
