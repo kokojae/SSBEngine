@@ -13,21 +13,22 @@ void TestObject::Init()
 {
 	animation->SetAnimation("TestImage");
 
-	position = { 500,500 };
+	position = { 0.0f,0.0f };
+	//position = { 100.0f,100.0f };
 }
 
 void TestObject::Update()
 {
 	position.x += 5.0f;
 
-	rotation += 5.0f;
+	//rotation += 0.1f;
 
 	if (rotation > 360.0f)
 	{
 		rotation -= 360.0f;
 	}
 
-	float ss = abs(sin(D3DXToRadian(rotation) * 20.0f) * 2.0f) + 0.5f;
+	float ss = abs(sin(D3DXToRadian(rotation) * 3.0f) * 2.0f) + 1.0f;
 	scale.x = scale.y = ss;
 
 	//scale.x = abs(sin(D3DXToRadian(rotation)));

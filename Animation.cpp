@@ -36,8 +36,9 @@ void Animation::Update()
 
 void Animation::SetAnimation(std::string textureName)
 {
+	timePerFrame = -1;
 	this->textureName = textureName;
-	imageSize = GraphicManager::GetTextureSize("TestImage");
+	frameSize = imageSize = GraphicManager::GetTextureSize(textureName);
 
 	lastChangeTime = clock();
 

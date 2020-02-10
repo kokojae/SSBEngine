@@ -10,6 +10,11 @@ public:
 	static int screenHeight;
 	static int screenWidth;
 
-	static D3DXVECTOR2 position;
+	static D3DXVECTOR2	position;
+	static float		rotation;
+	static D3DXVECTOR2	scale;
+	static D3DXMATRIX	matrix;
+
+	static void Update();
 };
 

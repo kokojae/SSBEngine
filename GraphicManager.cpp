@@ -2,6 +2,7 @@
 #include "Scene.h"
 #include "Animation.h"
 #include "GameObject.h"
+#include "Camera.h"
 
 LPDIRECT3DDEVICE9 GraphicManager::device = nullptr;
 LPD3DXSPRITE GraphicManager::sprite = nullptr;
@@ -24,6 +25,7 @@ void GraphicManager::Init(LPDIRECT3DDEVICE9 device)
 
 	//testTexture = CreateTexture(L"dd.png");
 	AddTexture("TestImage", L"dd.png");
+	AddTexture("TestBack", L"Background.png");
 }
 
 void GraphicManager::Render()
@@ -53,6 +55,8 @@ void GraphicManager::Render(GameObject* object)
 	D3DXMatrixScaling(&sca, object->scale.x, object->scale.y, 0.0f);
 
 	mat = cent * sca * rot * pos;
+
+	mat *= Camera::matrix;
 
 	RECT rc = object->animation->GetRect();
 
