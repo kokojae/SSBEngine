@@ -26,7 +26,7 @@ void GraphicManager::Init(LPDIRECT3DDEVICE9 device)
 	//testTexture = CreateTexture(L"dd.png");
 	AddTexture("TestImage", L"Resorce/dd.png");
 	AddTexture("TestBack", L"Resorce/Background.png");
-	AddTexture("TestBullet", L"Resorce/Background.png");
+	AddTexture("TestBullet", L"Resorce/bb.png");
 }
 
 void GraphicManager::Render()
