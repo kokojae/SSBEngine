@@ -1,5 +1,6 @@
 #pragma once
 #include <vector>
+#include <d3dx9.h>
 
 class KeyState
 {
@@ -20,11 +21,13 @@ public:
 	InputManager();
 	~InputManager();
 
-	enum class KeyCode { W, A, S, D, MAX };
+	enum class KeyCode { W, A, S, D, SPACE, MOUSE0, MOUSE1, MAX };
 
+	static HWND hWnd;
 	static std::vector<KeyState*> keyStateVector;
+	static D3DXVECTOR2 mousePosition;
 
-	static void Init();
+	static void Init(HWND hWnd);
 	static void Update();
 
 	static void AddKey(KeyCode keyCode, int vkCode);

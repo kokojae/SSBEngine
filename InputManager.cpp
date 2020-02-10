@@ -1,7 +1,10 @@
 #include "InputManager.h"
 #include <Windows.h>
+#include "Camera.h"
 
+HWND InputManager::hWnd = nullptr;
 std::vector<KeyState*> InputManager::keyStateVector = std::vector<KeyState*>();
+D3DXVECTOR2 InputManager::mousePosition = { 0.0f,0.0f };
 
 InputManager::InputManager()
 {
@@ -11,13 +14,18 @@ InputManager::~InputManager()
 {
 }
 
-void InputManager::Init()
+void InputManager::Init(HWND hWnd)
 {
+	InputManager::hWnd = hWnd;
+
 	keyStateVector.resize(static_cast<int>(KeyCode::MAX));
 	AddKey(KeyCode::W, 'W');
 	AddKey(KeyCode::A, 'A');
 	AddKey(KeyCode::S, 'S');
 	AddKey(KeyCode::D, 'D');
+	AddKey(KeyCode::SPACE , VK_SPACE);
+	AddKey(KeyCode::MOUSE0, VK_LBUTTON);
+	AddKey(KeyCode::MOUSE1, VK_RBUTTON);
 }
 
 void InputManager::Update()
@@ -43,6 +51,12 @@ void InputManager::Update()
 			key->isOn = false;
 		}
 	}
+
+	POINT pos;
+	GetCursorPos(&pos);
+	ScreenToClient(hWnd, &pos);
+	mousePosition = { static_cast<float>(pos.x - Camera::screenWidth * 0.5f),static_cast<float>(pos.y - Camera::screenHeight * 0.5f) };
+	mousePosition += Camera::position;
 }
 
 void InputManager::AddKey(KeyCode keyCode, int vkCode)

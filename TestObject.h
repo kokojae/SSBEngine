@@ -10,5 +10,9 @@ public:
 	void Init() override;
 	void Update() override;
 	void LateUpdate() override;
+	
+	void PlayerMove();
+	void MouseInput();
+	void CameraMove();
 };
 
