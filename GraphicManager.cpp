@@ -24,8 +24,9 @@ void GraphicManager::Init(LPDIRECT3DDEVICE9 device)
 	D3DXCreateSprite(device, &sprite);
 
 	//testTexture = CreateTexture(L"dd.png");
-	AddTexture("TestImage", L"dd.png");
-	AddTexture("TestBack", L"Background.png");
+	AddTexture("TestImage", L"Resorce/dd.png");
+	AddTexture("TestBack", L"Resorce/Background.png");
+	AddTexture("TestBullet", L"Resorce/Background.png");
 }
 
 void GraphicManager::Render()
