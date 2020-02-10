@@ -11,9 +11,9 @@ Bullet::~Bullet()
 
 void Bullet::Init()
 {
-	animation->SetAnimation("TestBullet");
+	animation->SetAnimation("Bullet");
 
-	sortingLayer = 1;
+	sortingLayer = 2;
 }
 
 void Bullet::Update()

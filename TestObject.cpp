@@ -18,7 +18,7 @@ void TestObject::Init()
 	animation->SetAnimation("TestImage");
 
 	position = { 0.0f,0.0f };
-	sortingLayer = 2;
+	sortingLayer = 5;
 }
 
 void TestObject::Update()

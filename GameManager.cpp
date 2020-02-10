@@ -6,6 +6,7 @@
 #include "TestObject.h"
 #include "Background.h"
 #include "InputManager.h"
+#include "Enemy.h"
 
 LPDIRECT3D9 GameManager::g_pD3D = nullptr;
 LPDIRECT3DDEVICE9 GameManager::g_pd3dDevice = nullptr;
@@ -43,6 +44,14 @@ void GameManager::Init(HWND hWnd)
 
 	Instantiate<TestObject>({ 0.0f,0.0f });
 	Instantiate<Background>({ 0.0f,0.0f });
+	Instantiate<Enemy>({ 0.0f,-500.0f });
+	Instantiate<Enemy>({ 500.0f,-500.0f });
+	Instantiate<Enemy>({ 500.0f,0.0f });
+	Instantiate<Enemy>({ 500.0f,500.0f });
+	Instantiate<Enemy>({ 0.0f,500.0f });
+	Instantiate<Enemy>({ -500.0f,500.0f });
+	Instantiate<Enemy>({ -500.0f,0.0f });
+	Instantiate<Enemy>({ -500.0f,-500.0f });
 }
 
 void GameManager::Update()
