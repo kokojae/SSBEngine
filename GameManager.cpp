@@ -5,6 +5,7 @@
 #include "GraphicManager.h"
 #include "TestObject.h"
 #include "Background.h"
+#include "InputManager.h"
 
 LPDIRECT3D9 GameManager::g_pD3D = nullptr;
 LPDIRECT3DDEVICE9 GameManager::g_pd3dDevice = nullptr;
@@ -38,6 +39,7 @@ void GameManager::Init(HWND hWnd)
 	nowScene = new Scene();
 
 	GraphicManager::Init(g_pd3dDevice);
+	InputManager::Init();
 
 	Instantiate<TestObject>({ 0.0f,0.0f });
 	Instantiate<Background>({ 0.0f,0.0f });
@@ -45,6 +47,7 @@ void GameManager::Init(HWND hWnd)
 
 void GameManager::Update()
 {
+	InputManager::Update();
 	nowScene->Update();
 	Camera::Update();
 }

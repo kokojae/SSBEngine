@@ -1,5 +1,6 @@
 #include "TestObject.h"
 #include "Animation.h"
+#include "InputManager.h"
 
 TestObject::TestObject()
 {
@@ -20,9 +21,26 @@ void TestObject::Init()
 
 void TestObject::Update()
 {
+	if (InputManager::GetKey(InputManager::KeyCode::W))
+	{
+		position.y -= 5.0f;
+	}
+	if (InputManager::GetKey(InputManager::KeyCode::A))
+	{
+		position.x -= 5.0f;
+	}
+	if (InputManager::GetKey(InputManager::KeyCode::S))
+	{
+		position.y += 5.0f;
+	}
+	if (InputManager::GetKey(InputManager::KeyCode::D))
+	{
+		position.x += 5.0f;
+	}
+
 	position.x += 5.0f;
 
-	//rotation += 0.1f;
+	rotation += 0.1f;
 
 	if (rotation > 360.0f)
 	{
