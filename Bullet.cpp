@@ -26,6 +26,10 @@ void Bullet::Update()
 	}
 }
 
+void Bullet::OnCollisionEnter(GameObject* gameObject)
+{
+}
+
 void Bullet::SetOption(D3DXVECTOR2 direction, float speed)
 {
 	rotation = D3DXToDegree(atan2(direction.y, direction.x));

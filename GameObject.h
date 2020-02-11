@@ -7,6 +7,7 @@
 
 class Component;
 class Animation;
+class BoxCollider;
 
 class GameObject
 {
@@ -15,6 +16,7 @@ public:
 	~GameObject();
 
 	Animation* animation;
+	BoxCollider* collider;
 	
 	D3DXVECTOR2 position;
 	float		rotation;
@@ -28,6 +30,8 @@ public:
 	virtual void LateUpdate();
 	virtual void Render();
 	virtual void Release();
+
+	virtual void OnCollisionEnter(GameObject* gameObject);
 
 	void UpdateAnimation();
 

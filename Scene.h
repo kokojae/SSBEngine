@@ -15,8 +15,9 @@ public:
 
 	void Update();
 
-	void CollisionCheck();
 	void AddGameObject(GameObject* obj);
+	bool AABB(GameObject* obj1, GameObject* obj2);
+	void CollisionCheck();
 };
 
 template<typename T>
