@@ -77,9 +77,19 @@ void Scene::CollisionCheck()
 	{
 		auto obj1 = vec[i];
 
+		if (!obj1->isActive)
+		{
+			continue;
+		}
+
 		for (int j = i; j < size; j++)
 		{
 			auto obj2 = vec[j];
+
+			if (!obj2->isActive)
+			{
+				continue;
+			}
 
 			if (obj1 == obj2)
 			{

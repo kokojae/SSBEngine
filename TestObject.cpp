@@ -15,6 +15,7 @@ TestObject::~TestObject()
 
 void TestObject::Init()
 {
+	name = "Player";
 	animation->SetAnimation("TestImage");
 
 	position = { 0.0f,0.0f };

@@ -40,6 +40,8 @@ public:
 
 	void UpdateAnimation();
 
+	static GameObject* Find(std::string name);
+
 	//std::map<std::string, Component*> componentMap;
 	//std::list<Component*> componentList;
 
