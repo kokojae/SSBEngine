@@ -37,7 +37,7 @@ void Camera::Update()
 	D3DXMatrixRotationZ(&rot, D3DXToRadian(rotation));
 	D3DXMatrixScaling(&sca, scale.x, scale.y, 0.0f);
 
-	matrix = cent * sca * rot * pos;
+	matrix = pos * sca * rot * cent;
 }
 
 void Camera::AddShake(float shake)
