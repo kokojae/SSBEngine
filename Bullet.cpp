@@ -1,5 +1,6 @@
 #include "Bullet.h"
 #include "Animation.h"
+#include "Camera.h"
 
 Bullet::Bullet() : direction({ 0.0f,0.0f }), speed(0.0f), spawnTime(clock()), aliveTime(3000)
 {
@@ -32,6 +33,7 @@ void Bullet::OnCollisionEnter(GameObject* gameObject)
 	{// 맞은 애가 적임
 		gameObject->isActive = false;
 		this->isActive = false;
+		Camera::AddShake(50.0f);
 	}
 }
 

@@ -13,8 +13,12 @@ public:
 	static D3DXVECTOR2	position;
 	static float		rotation;
 	static D3DXVECTOR2	scale;
+
+	static float		shake;
 	static D3DXMATRIX	matrix;
 
 	static void Update();
+
+	static void AddShake(float shake);
 };
 
