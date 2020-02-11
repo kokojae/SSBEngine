@@ -1,8 +1,10 @@
 #include "Animation.h"
 #include "GraphicManager.h"
+#include "GameObject.h"
+#include "BoxCollider.h"
 
 Animation::Animation() : textureName(""), imageSize({ 0,0 }), frameSize({ 0,0 }), nowFrame({ 0,0 }),
-lastChangeTime(0), timePerFrame(0)
+lastChangeTime(0), timePerFrame(0), parent(nullptr)
 {
 }
 
@@ -48,6 +50,8 @@ void Animation::SetAnimation(std::string textureName)
 		timePerFrame = 500;
 		frameSize = { 192,108 };
 	}
+
+	parent->collider->size = frameSize;
 }
 
 RECT Animation::GetRect()

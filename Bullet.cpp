@@ -28,6 +28,11 @@ void Bullet::Update()
 
 void Bullet::OnCollisionEnter(GameObject* gameObject)
 {
+	if (gameObject->name == "Enemy")
+	{// 맞은 애가 적임
+		gameObject->isActive = false;
+		this->isActive = false;
+	}
 }
 
 void Bullet::SetOption(D3DXVECTOR2 direction, float speed)

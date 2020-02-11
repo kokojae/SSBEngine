@@ -1,7 +1,7 @@
 #pragma once
 #include <map>
 #include <list>
-//#include <string>
+#include <string>
 //#include <typeinfo>
 #include <d3dx9.h>
 
@@ -24,6 +24,8 @@ public:
 
 	bool isActive;
 	int sortingLayer;
+
+	std::string name;
 
 	virtual void Init();
 	virtual void Update();

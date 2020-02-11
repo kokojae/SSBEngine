@@ -3,11 +3,11 @@
 #include "BoxCollider.h"
 
 GameObject::GameObject() : position({ 0.0f,0.0f }), rotation(0.0f), scale({ 1.0f,1.0f }),
-isActive(true), sortingLayer(0)
+isActive(true), sortingLayer(0), name("None")
 {
 	animation = new Animation();
 	collider = new BoxCollider();
-	collider->parent = this;
+	animation->parent = collider->parent = this;
 }
 
 GameObject::~GameObject()

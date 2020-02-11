@@ -13,4 +13,5 @@ void Enemy::Init()
 {
 	animation->SetAnimation("Enemy");
 	sortingLayer = 1;
+	name = "Enemy";
 }

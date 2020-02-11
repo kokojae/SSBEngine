@@ -13,20 +13,38 @@ Scene::~Scene()
 
 void Scene::Update()
 {
-	for (auto iter = objectList.begin(); iter != objectList.end(); iter++)
+	//for (auto iter = objectList.begin(); iter != objectList.end(); iter++)
+	//{
+	//	auto obj = *iter;
+
+	//	if (!obj->isActive)
+	//	{
+	//		obj->Release();
+	//		objectList.erase(iter--);
+	//		delete obj;
+	//	}
+	//	else
+	//	{
+	//		obj->Update();
+	//		obj->UpdateAnimation();
+	//	}
+	//}
+
+	auto iter = objectList.begin();
+	while (iter != objectList.end())
 	{
 		auto obj = *iter;
-
-		if (!obj->isActive)
-		{
-			obj->Release();
-			objectList.erase(iter--);
-			delete obj;
-		}
-		else
+		if (obj->isActive)
 		{
 			obj->Update();
 			obj->UpdateAnimation();
+			iter++;
+		}
+		else
+		{
+			obj->Release();
+			delete obj;
+			iter = objectList.erase(iter++);
 		}
 	}
 
