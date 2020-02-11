@@ -3,10 +3,7 @@
 #include "Scene.h"
 #include "GameObject.h"
 #include "GraphicManager.h"
-#include "TestObject.h"
-#include "Background.h"
 #include "InputManager.h"
-#include "Enemy.h"
 
 LPDIRECT3D9 GameManager::g_pD3D = nullptr;
 LPDIRECT3DDEVICE9 GameManager::g_pd3dDevice = nullptr;
@@ -37,32 +34,20 @@ void GameManager::Init(HWND hWnd)
 		D3DCREATE_SOFTWARE_VERTEXPROCESSING,
 		&d3dpp, &g_pd3dDevice);
 
-	nowScene = new Scene();
-
-	mciSendString(L"close BGM", 0, 0, 0);
-	mciSendString(L"open ./Resorce/Sound/BGM.wav type mpegvideo alias Bgm", 0, 0, 0);
-	mciSendString(L"play BGM repeat", 0, 0, 0);
-	mciSendString(L"setaudio BGM volume to 300", 0, 0, 0);
-
 	GraphicManager::Init(g_pd3dDevice);
 	InputManager::Init(hWnd);;
 
-	Instantiate<TestObject>({ 0.0f,0.0f });
-	Instantiate<Background>({ 0.0f,0.0f });
-	Instantiate<Enemy>({ 0.0f,-500.0f });
-	Instantiate<Enemy>({ 500.0f,-500.0f });
-	Instantiate<Enemy>({ 500.0f,0.0f });
-	Instantiate<Enemy>({ 500.0f,500.0f });
-	Instantiate<Enemy>({ 0.0f,500.0f });
-	Instantiate<Enemy>({ -500.0f,500.0f });
-	Instantiate<Enemy>({ -500.0f,0.0f });
-	Instantiate<Enemy>({ -500.0f,-500.0f });
+	nowScene = new Scene();
+	nowScene->ChangeScene("Main");
 }
 
 void GameManager::Update()
 {
+	nowScene->CheckNextScene();
 	InputManager::Update();
 	nowScene->Update();
+	nowScene->CollisionCheck();
+	nowScene->LateUpdate();
 	Camera::Update();
 }
 

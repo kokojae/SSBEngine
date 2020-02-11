@@ -2,8 +2,11 @@
 #include "GameObject.h"
 #include "BoxCollider.h"
 #include <vector>
+#include "TestObject.h"
+#include "Background.h"
+#include "Enemy.h"
 
-Scene::Scene()
+Scene::Scene() : nextScene("")
 {
 }
 
@@ -47,9 +50,10 @@ void Scene::Update()
 			iter = objectList.erase(iter++);
 		}
 	}
+}
 
-	CollisionCheck();
-
+void Scene::LateUpdate()
+{
 	for (auto obj : objectList)
 	{
 		obj->LateUpdate();
@@ -107,6 +111,44 @@ void Scene::CollisionCheck()
 				obj2->OnCollisionEnter(obj1);
 			}
 		}
+	}
+}
+
+void Scene::ChangeScene(std::string sceneName)
+{
+	for (auto obj : objectList)
+	{
+		obj->isActive = false;
+	}
+
+	Update();
+
+	if (sceneName == "Main")
+	{
+		mciSendString(L"close BGM", 0, 0, 0);
+		mciSendString(L"open ./Resorce/Sound/BGM.wav type mpegvideo alias Bgm", 0, 0, 0);
+		mciSendString(L"play BGM repeat", 0, 0, 0);
+		mciSendString(L"setaudio BGM volume to 300", 0, 0, 0);
+
+		Instantiate<TestObject>({ 0.0f,0.0f });
+		Instantiate<Background>({ 0.0f,0.0f });
+		Instantiate<Enemy>({ 0.0f,-500.0f });
+		Instantiate<Enemy>({ 500.0f,-500.0f });
+		Instantiate<Enemy>({ 500.0f,0.0f });
+		Instantiate<Enemy>({ 500.0f,500.0f });
+		Instantiate<Enemy>({ 0.0f,500.0f });
+		Instantiate<Enemy>({ -500.0f,500.0f });
+		Instantiate<Enemy>({ -500.0f,0.0f });
+		Instantiate<Enemy>({ -500.0f,-500.0f });
+	}
+}
+
+void Scene::CheckNextScene()
+{
+	if (nextScene != "")
+	{
+		ChangeScene(nextScene);
+		nextScene = "";
 	}
 }
 

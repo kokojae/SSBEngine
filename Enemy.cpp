@@ -15,12 +15,17 @@ void Enemy::Init()
 	animation->SetAnimation("Enemy");
 	sortingLayer = 1;
 	name = "Enemy";
-
-	target = static_cast<TestObject*>(GameObject::Find("Player"));
 }
 
 void Enemy::Update()
 {
+	target = static_cast<TestObject*>(GameObject::Find("Player"));
+
+	if (target == nullptr)
+	{
+		return;
+	}
+
 	auto diff = target->position - position;
 
 	D3DXVECTOR2 result;

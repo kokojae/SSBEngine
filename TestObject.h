@@ -11,6 +11,7 @@ public:
 	void Update() override;
 	void OnRender() override;
 	void LateUpdate() override;
+	void Release() override;
 	
 	void PlayerMove();
 	void MouseInput();

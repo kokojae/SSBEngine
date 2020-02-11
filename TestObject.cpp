@@ -39,6 +39,11 @@ void TestObject::LateUpdate()
 	CameraMove();
 }
 
+void TestObject::Release()
+{
+	GameManager::nowScene->nextScene = "Main";
+}
+
 void TestObject::PlayerMove()
 {
 	if (InputManager::GetKey(InputManager::KeyCode::W))

@@ -2,6 +2,7 @@
 #include <list>
 #include <d3dx9.h>
 #include "GameManager.h"
+#include <string>
 
 class GameObject;
 
@@ -11,13 +12,18 @@ public:
 	Scene();
 	~Scene();
 
+	std::string nextScene;
 	std::list<GameObject*> objectList;
 
 	void Update();
+	void LateUpdate();
 
 	void AddGameObject(GameObject* obj);
 	bool AABB(GameObject* obj1, GameObject* obj2);
 	void CollisionCheck();
+
+	void ChangeScene(std::string sceneName);
+	void CheckNextScene();
 };
 
 template<typename T>
