@@ -13,6 +13,7 @@ public:
 
 	static LPDIRECT3DDEVICE9 device;
 	static LPD3DXSPRITE sprite;
+	static ID3DXFont* font;
 	static std::map<std::string, LPDIRECT3DTEXTURE9> textureMap;
 
 	static void Init(LPDIRECT3DDEVICE9 device);
@@ -24,6 +25,7 @@ public:
 	static D3DXVECTOR2 GetTextureSize(std::string textureName);
 	static void AddTexture(std::string textureName, LPCWSTR fileName);
 	static LPDIRECT3DTEXTURE9 GetTexture(std::string textureName);
+	static void RenderText(std::string str, D3DXVECTOR2 pos);
 };
 
 bool Compare(GameObject* o1, GameObject* o2);

@@ -4,6 +4,7 @@
 #include "Camera.h"
 #include "Scene.h"
 #include "Bullet.h"
+#include "GraphicManager.h"
 
 TestObject::TestObject()
 {
@@ -26,6 +27,11 @@ void TestObject::Update()
 {
 	PlayerMove();
 	MouseInput();
+}
+
+void TestObject::OnRender()
+{
+	GraphicManager::RenderText("Player", position);
 }
 
 void TestObject::LateUpdate()

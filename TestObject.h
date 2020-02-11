@@ -9,6 +9,7 @@ public:
 
 	void Init() override;
 	void Update() override;
+	void OnRender() override;
 	void LateUpdate() override;
 	
 	void PlayerMove();

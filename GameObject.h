@@ -34,6 +34,7 @@ public:
 	virtual void Update();
 	virtual void LateUpdate();
 	virtual void Render();
+	virtual void OnRender();
 	virtual void Release();
 
 	virtual void OnCollisionEnter(GameObject* gameObject);

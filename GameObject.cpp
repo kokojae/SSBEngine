@@ -34,6 +34,10 @@ void GameObject::Render()
 {
 }
 
+void GameObject::OnRender()
+{
+}
+
 void GameObject::Release()
 {
 }
