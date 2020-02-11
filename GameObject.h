@@ -4,6 +4,9 @@
 #include <string>
 //#include <typeinfo>
 #include <d3dx9.h>
+#include <mmsystem.h>
+
+//#pragma comment(lib, "winmm.lib")
 
 class Component;
 class Animation;

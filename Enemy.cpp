@@ -15,3 +15,8 @@ void Enemy::Init()
 	sortingLayer = 1;
 	name = "Enemy";
 }
+
+void Enemy::Release()
+{
+	PlaySound(L"Resorce/Sound/destroy.wav", NULL, SND_FILENAME | SND_ASYNC);
+}

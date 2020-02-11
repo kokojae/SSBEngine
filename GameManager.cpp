@@ -39,6 +39,11 @@ void GameManager::Init(HWND hWnd)
 
 	nowScene = new Scene();
 
+	mciSendString(L"close BGM", 0, 0, 0);
+	mciSendString(L"open ./Resorce/Sound/BGM.wav type mpegvideo alias Bgm", 0, 0, 0);
+	mciSendString(L"play BGM repeat", 0, 0, 0);
+	mciSendString(L"setaudio BGM volume to 300", 0, 0, 0);
+
 	GraphicManager::Init(g_pd3dDevice);
 	InputManager::Init(hWnd);;
 

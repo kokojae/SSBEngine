@@ -7,6 +7,7 @@ public:
 	Enemy();
 	~Enemy();
 
-	void Init();
+	void Init() override;
+	void Release() override;
 };
 

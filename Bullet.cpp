@@ -12,6 +12,8 @@ Bullet::~Bullet()
 
 void Bullet::Init()
 {
+	PlaySound(L"Resorce/Sound/atk.wav", NULL, SND_FILENAME | SND_ASYNC);
+
 	animation->SetAnimation("Bullet");
 
 	sortingLayer = 2;
